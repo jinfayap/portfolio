@@ -5,11 +5,11 @@
     <input type="email" required v-model = 'email' placeholder="Email" />
     <input type="password" required v-model = 'password' placeholder = "Password" />
 
-    <p v-if = 'error' class = 'error'>{{error}}</p>
+    <p v-if = 'error' class = 'error'>{{ error }}</p>
     <button v-if = '!isPending'>Sign up</button>
     <button v-if = 'isPending' disabled>Processing</button>
 
-    <p>Created an account? <router-link :to = "{name: 'Login'}"><span>Login</span></router-link> here</p>
+    <p>Created an account? <router-link :to = "{ name: 'Login' }"><span>Login</span></router-link> here</p>
   </form>
 </template>
 
