@@ -3,23 +3,32 @@
     <h3 class = 'header'>Login page</h3>
     <input type="email" required v-model = 'email' placeholder="Email" />
     <input type="password" required v-model = 'password' placeholder="Password" />
-    <button>Login</button>
+    <p v-if = 'error' class = 'error'>{{ error }}</p>
+    <button v-if = '!isPending'>Login</button>
+    <button v-if = 'isPending' disabled>Logging in</button>
     <p>New to the page? <router-link :to = "{name: 'Signup'}"><span>Sign up</span></router-link> here</p>
   </form>
 </template>
 
 <script>
 import { ref } from 'vue';
+import useLogin from '@/composable/useLogin'
+
 export default {
   setup() {
     const email = ref('')
     const password = ref('')
 
-    const handleSubmit = () => {
-      console.log(email.value, password.value)
+    const {login, error, isPending} = useLogin()
+
+    const handleSubmit = async () => {
+      await login(email.value, password.value)
+      if (!error.value) {
+        console.log('Login success')
+      }
     }
 
-    return {email, password, handleSubmit}
+    return {email, password, handleSubmit, error, isPending}
   }
 };
 </script>
