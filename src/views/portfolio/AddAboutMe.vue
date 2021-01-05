@@ -49,7 +49,7 @@ export default {
        
         const handleChange = (e) => {
             const selected = e.target.files[0]
-            console.log(selected)
+            // console.log(selected)
             if(selected && fileType.includes(selected.type)) {
                 file.value = selected
             } else {

@@ -9,8 +9,6 @@ projectAuth.onAuthStateChanged(_user => {
     } else {
         user.value = null
     }
-
-    console.log(user.value)
 })
 
 const getUser = () => {
