@@ -7,8 +7,8 @@ const useCollection = (collection) => {
 
     const addDoc = async (doc) => {
         error.value = null
+        isPending.value = true
         try {
-            isPending.value = true
             const res = await projectFirestore.collection(collection).add(doc)
             isPending.value = false
             return res
@@ -18,9 +18,23 @@ const useCollection = (collection) => {
             isPending.value = false
         }
     }
+    
+    const updateDoc = async(doc, id) => {
+        error.value = null
+        isPending.value = true
+        try {
+            const docRef = projectFirestore.collection(collection).doc(id)
+            const res = await docRef.update(doc)
+            
+        } catch (err) {
+            console.log(err.message)
+            error.value = err.message
+            isPending.value = false
+        }
+    }
 
 
-    return {error, isPending, addDoc}
+    return {error, isPending, addDoc, updateDoc}
 }
 
 export default useCollection
