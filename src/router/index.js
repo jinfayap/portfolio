@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/portfolio/Home.vue'
 import AddAboutMe from '../views/portfolio/AddAboutMe.vue'
+import EditAboutMe from '../views/portfolio/EditAboutMe.vue'
 import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
 
@@ -24,6 +25,12 @@ const routes = [
     path: '/add/aboutme',
     name: 'AddAboutMe',
     component: AddAboutMe
+  },
+  {
+    path: '/edit/aboutme',
+    name: 'EditAboutMe',
+    component: EditAboutMe,
+    props: true
   }
 ]
 
