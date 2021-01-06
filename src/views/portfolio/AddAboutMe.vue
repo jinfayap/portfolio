@@ -4,6 +4,7 @@
       <textarea required v-model = 'description'></textarea>
       <label>About me Image</label>
       <input type="file" @change = handleChange>
+      <div v-if = 'fileError'> {{ fileError }}</div>
       <button v-if = '!isPending'>Submit</button>
       <button v-else disabled>Uploading</button>
   </form>
@@ -14,17 +15,20 @@ import { ref } from 'vue'
 import useCollection from '@/composable/useCollection.js'
 import useStorage from '@/composable/useStorage'
 import { useRouter } from 'vue-router'
+import getUser from '@/composable/getUser'
 
 export default {
     setup() {
         // import vue router
         const router = useRouter()
-
+        const { user } = getUser()
+        
         const description = ref('')
         const {error, addDoc} = useCollection('aboutme')
 
         const file = ref(null)
         const fileType = ['image/jpeg', 'image/png']
+        const fileError = ref(null)
         
         const {url, filePath, uploadImage} = useStorage('portfolio')
 
@@ -37,7 +41,8 @@ export default {
             const doc = {
                 description: description.value,
                 url: url.value,
-                filePath: filePath.value
+                filePath: filePath.value,
+                userId: user.value.uid
             }
             await addDoc(doc)
             }
@@ -52,12 +57,14 @@ export default {
             // console.log(selected)
             if(selected && fileType.includes(selected.type)) {
                 file.value = selected
+                fileError.value = null
             } else {
                 file.value = null
+                fileError.value = 'Please choose a image file (jpg or png)'
             }
         }
 
-        return { description, handleSubmit, handleChange, isPending }
+        return { description, handleSubmit, handleChange, isPending, fileError }
     }
 }
 </script>
