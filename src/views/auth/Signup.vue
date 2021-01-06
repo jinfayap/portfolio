@@ -16,20 +16,24 @@
 <script>
 import { ref } from 'vue';
 import useSignup from '@/composable/useSignup.js'
-
+import { useRouter } from 'vue-router'
 export default {
     setup() {
         const displayName = ref('')
         const email = ref('')
         const password = ref('')
 
+        const router = useRouter()
+
         const {signUp, error, isPending} = useSignup();
 
         const handleSubmit = async () => {
             await signUp(email.value, password.value, displayName.value)
-            if (!error) {
+            if (!error.value) {
                 console.log('New Account Sign up successful')
+                router.push({ name: 'Login' })
             }
+            
         }
         return {displayName, email, password, handleSubmit, error, isPending}
     }  
