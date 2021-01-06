@@ -4,6 +4,29 @@ import AddAboutMe from '../views/portfolio/AddAboutMe.vue'
 import EditAboutMe from '../views/portfolio/EditAboutMe.vue'
 import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
+import getUser from '../composable/getUser'
+
+// auth guard
+
+import { projectAuth } from '../firebase/config'
+
+const requireAuth = (to, from, next) => {
+  let user = projectAuth.currentUser
+  if(!user) {
+    next({ name: 'Login'})
+  } else {
+    next()
+  }
+}
+
+const requireNoAuth = (to, from, next) => {
+  let user = projectAuth.currentUser
+  if(user) {
+    next({ name: 'Home'})
+  } else {
+    next()
+  }
+}
 
 const routes = [
   {
@@ -14,23 +37,27 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    beforeEnter: requireNoAuth
   },
   {
     path: '/signup',
     name: 'Signup',
-    component: Signup
+    component: Signup,
+    beforeEnter: requireNoAuth
   },
   {
     path: '/add/aboutme',
     name: 'AddAboutMe',
-    component: AddAboutMe
+    component: AddAboutMe,
+    beforeEnter: requireAuth
   },
   {
     path: '/edit/aboutme',
     name: 'EditAboutMe',
     component: EditAboutMe,
-    props: true
+    props: true,
+    beforeEnter: requireAuth
   }
 ]
 
