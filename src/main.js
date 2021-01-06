@@ -5,4 +5,15 @@ import router from './router'
 // global css
 import './assets/main.css'
 
-createApp(App).use(router).mount('#app')
+let app
+
+// import projectAuth
+
+import { projectAuth } from './firebase/config'
+
+projectAuth.onAuthStateChanged( () => {
+    if(!app) {
+        app = createApp(App).use(router).mount('#app')
+    }
+})
+
