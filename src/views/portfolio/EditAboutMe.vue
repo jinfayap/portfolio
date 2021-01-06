@@ -20,7 +20,7 @@ import useCollection from '@/composable/useCollection'
 import { useRouter } from "vue-router";
 
 export default {
-  props: ["id"],
+  props: ['id'],
   setup(props) {
     // import vue router
     const router = useRouter();
@@ -58,7 +58,7 @@ export default {
       if (!error.value) {
         router.push({ name: "Home" });
       }
-    };
+    }
 
     const handleChange = (e) => {
       const selected = e.target.files[0];
@@ -68,11 +68,11 @@ export default {
       } else {
         file.value = null;
       }
-    };
+    }
 
-    return { handleSubmit, handleChange, isPending, document, error };
-  },
-};
+    return { handleSubmit, handleChange, isPending, document, error }
+  }
+}
 </script>
 
 <style scoped>
