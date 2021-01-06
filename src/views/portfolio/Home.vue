@@ -1,14 +1,15 @@
 <template>
   <div class="home">
-    Portfolio
     <About />
+    <Skills />
   </div>
 </template>
 
 <script>
 import About from '@/components/About.vue'
+import Skills from '@/components/Skills.vue'
 export default {
   name: 'Home',
-  components: {About}
+  components: { About, Skills }
 }
 </script>
