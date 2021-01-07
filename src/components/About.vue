@@ -1,30 +1,33 @@
 <template>
-  <h3 class="header">About Me</h3>
-  <p class="error">{{ error }}</p>
+  <div class= 'section'>
+    <h3 class="header">About Me</h3>
+    <p class="error">{{ error }}</p>
 
-  <div v-if="documents">
-    <div class="about" v-for="doc in documents" :key="doc.id">
-      <div class="description">
+    <div v-if="documents">
+      <div class="about" v-for="doc in documents" :key="doc.id">
+        <div class="description">
         {{ doc.description }}
-      </div>
+        </div>
 
-      <div class="img">
-        <img :src="doc.url" />
-      </div>
+        <div class="img">
+          <img :src="doc.url" />
+        </div>
 
-      <div v-if="ownership">
-        <router-link :to="{ name: 'EditAboutMe', params: {id: doc.id} }">
+        <div v-if="ownership">
+          <router-link :to="{ name: 'EditAboutMe', params: {id: doc.id} }">
           <button>Edit About Me</button>
-        </router-link>
+          </router-link>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div v-if="!documents">
-    <router-link :to="{ name: 'AddAboutMe' }">
-      <button>Add About Me</button>
-    </router-link>
+    <div v-if="!documents">
+      <router-link :to="{ name: 'AddAboutMe' }">
+        <button>Add About Me</button>
+      </router-link>
+    </div>
   </div>
+  
 </template>
 
 <script>

@@ -79,11 +79,15 @@ button:disabled {
     margin: 16px 0;
 }
 
+/* section */
+.section {
+    padding: 20px 0;
+    margin: 20px 0;
+}
 /* Black Background */
 .blackbg {
     background: black;
     color: white;
-    padding: 20px 0;
 }
 
 /* Overlay */
