@@ -78,3 +78,34 @@ button:disabled {
     font-size: 14px;
     margin: 16px 0;
 }
+
+/* Black Background */
+.blackbg {
+    background: black;
+    color: white;
+    padding: 20px 0;
+}
+
+/* Overlay */
+.overlay {
+    background-color: black;
+    width: 100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    position: absolute
+}
+
+/* Center */
+.center-box {
+    width: 100%;
+    height:100%;
+    position: relative;
+}
+.center {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
