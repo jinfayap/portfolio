@@ -1,5 +1,5 @@
 <template>
-  <div class="skills blackbg" @end = "endOverlay">
+  <div class="skills blackbg section">
       <h3 class = 'header'>My Skills set</h3>
 
       <div class = 'skillset'>
