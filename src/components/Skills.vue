@@ -18,8 +18,11 @@
 
       <AddSkill v-show = '!showAddSkill'/>
 
-      <button v-if = 'showAddSkill' @click = 'showAddSkill = !showAddSkill'>Add a New Skill</button>
-      <button v-else @click = 'showAddSkill = !showAddSkill'>Hide form </button>
+      <div class = 'toggleSkill'>
+        <button v-if = 'showAddSkill' @click = 'showAddSkill = !showAddSkill'>Add a New Skill</button>
+        <button v-else @click = 'showAddSkill = !showAddSkill'>Hide form </button>
+      </div>
+
     
       <div class="overlay" v-if = 'showOverlay'>
         <EditSkill :id = docIdProps @close = "showOverlay = !showOverlay"/>
@@ -63,22 +66,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .skills {
     width: 100%;
     height: 100%;
     position: relative;
 }
-.blackbg {
-    background: black;
-    color: white;
-    padding: 20px 0;
-}
 
-form {
-    width: 80%;
-}
-button {
+.skills .toggleSkill button {
     display: block;
     margin: 10px auto;
 }
@@ -120,13 +115,5 @@ button {
     margin-left: 10px;
     cursor: pointer;
     font-size: 20px;
-}
-.overlay {
-    background-color: black;
-    width: 100%;
-    height:100%;
-    top: 0;
-    left: 0;
-    position: absolute
 }
 </style>
