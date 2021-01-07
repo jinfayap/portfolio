@@ -1,0 +1,132 @@
+<template>
+  <div class="skills blackbg" @end = "endOverlay">
+      <h3 class = 'header'>My Skills set</h3>
+
+      <div class = 'skillset'>
+          <div v-for = 'skill in skills' class = 'skill-pill' :key = skill.id>
+              <div class = 'skill-value'>{{ skill.skill }}</div>
+              <div class = 'skillbar'> 
+                  <span :style = "{color: 'black', 'user-select': 'none'}">{{ skill.proficiency }}</span>
+                  <span class = 'percentage' :style = "{width: skill.proficiency + '%'}">{{ skill.proficiency }}%</span>
+              </div>
+              <div class="controls">
+                  <span class="material-icons" @click = 'handleDelete(skill.id)'>delete</span>
+                  <span class="material-icons" @click = 'handleUpdate(skill.id)' >edit</span>
+              </div>
+          </div>
+      </div>
+
+      <AddSkill v-show = '!showAddSkill'/>
+
+      <button v-if = 'showAddSkill' @click = 'showAddSkill = !showAddSkill'>Add a New Skill</button>
+      <button v-else @click = 'showAddSkill = !showAddSkill'>Hide form </button>
+    
+      <div class="overlay" v-if = 'showOverlay'>
+        <EditSkill :id = docIdProps @close = "showOverlay = !showOverlay"/>
+      </div>
+
+  </div>
+
+</template>
+
+<script>
+import { ref } from 'vue'
+import getNRTCollection from '@/composable/getNRTCollection'
+import useCollection from '@/composable/useCollection'
+import getUser from '@/composable/getUser'
+import AddSkill from './AddSkill'
+import EditSkill from './EditSkill'
+
+export default {
+    components: { AddSkill, EditSkill },
+    setup() {
+        const showAddSkill = ref(true)
+
+        const { documents:skills, error } = getNRTCollection('skills')
+        const { deleteDoc } = useCollection('skills')
+
+        const showOverlay = ref(false)
+        const docIdProps = ref(null)
+
+        const handleUpdate = (id) => {
+            showOverlay.value = true
+            docIdProps.value = id
+        }
+
+        const handleDelete = async(id) => {
+            await deleteDoc(id)
+            console.log('Document successfully deleted')
+        }
+
+        return { showAddSkill, error, skills, showOverlay, docIdProps, handleUpdate, handleDelete}
+    }
+}
+</script>
+
+<style scoped>
+.skills {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.blackbg {
+    background: black;
+    color: white;
+    padding: 20px 0;
+}
+
+form {
+    width: 80%;
+}
+button {
+    display: block;
+    margin: 10px auto;
+}
+.skillset {
+    margin-bottom: 1em;
+    width: 100%;
+}
+.skill-pill {
+    border: 1px solid white;
+    border-radius: 30px;
+    margin: 10px auto;
+    width: 75%;
+    text-align: center;
+}
+.skill-value {
+    display: inline-block;
+    margin: 10px 20px;
+    width: 15%;
+    font-weight: 500;
+}
+.skillbar {
+    display: inline-block;
+    border: 1px solid white;
+    width: 60%;
+    position: relative;
+}
+.percentage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: lightgreen;
+    height: 100%;
+}
+.controls {
+    display: inline-block;
+    width: 15%;
+}
+.controls span {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.overlay {
+    background-color: black;
+    width: 100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    position: absolute
+}
+</style>
