@@ -25,7 +25,7 @@ const useCollection = (collection) => {
         try {
             const docRef = projectFirestore.collection(collection).doc(id)
             const res = await docRef.update(doc)
-            
+            isPending.value = false
         } catch (err) {
             console.log(err.message)
             error.value = err.message
@@ -33,8 +33,24 @@ const useCollection = (collection) => {
         }
     }
 
+    const deleteDoc = async(id) => {
+        error.value = null
+        isPending.value = true
 
-    return {error, isPending, addDoc, updateDoc}
+        try {
+            const docRef = projectFirestore.collection(collection).doc(id)
+            await docRef.delete()
+            isPending.value = true
+        } catch(err) {
+            error.value = err.message
+            console.log(err.message)
+            isPending.value = false
+        }
+        
+    }
+
+
+    return {error, isPending, addDoc, updateDoc, deleteDoc}
 }
 
 export default useCollection
