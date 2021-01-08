@@ -11,7 +11,7 @@
             <div v-if = 'work.contribution'><span>Contributions:</span> {{ work.contribution }}</div>
         </div>
         <div class="work-footer">
-            <a :href="work.webUrl" target="_blank"><span class="material-icons">language</span></a>
+            <a :href="work.webUrl" target="_blank" v-if = 'work.webUrl'><span class="material-icons">language</span></a>
             <div class="controls">
                 <span class="material-icons" @click = 'handleDelete(work.id, work.filePath)'>delete</span>
                 <span class="material-icons" @click = 'handleUpdate(work.id)' >edit</span>
