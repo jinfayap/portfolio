@@ -39,7 +39,7 @@ form {
     border: 1px solid var(--secondary);
     background: white;
 }
-input, textarea {
+input, textarea, select{
     border: 0;
     border-bottom: 1px solid var(--secondary);
     padding: 10px;
@@ -48,6 +48,10 @@ input, textarea {
     width: 100%;
     box-sizing: border-box;
     margin: 20px auto;
+}
+textarea {
+    resize: none;
+    height: 100px;
 }
 
 /* Button */
@@ -113,3 +117,9 @@ button:disabled {
     transform: translate(-50%, -50%);
     width: 100%;
 }
+
+/* material icon */
+span.material-icons {
+    margin :0;
+    font-size: 24px;
+} 
