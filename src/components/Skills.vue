@@ -112,7 +112,7 @@ export default {
     width: 15%;
 }
 .controls span {
-    margin-left: 10px;
+    margin-left: 5px;
     cursor: pointer;
     font-size: 20px;
 }
