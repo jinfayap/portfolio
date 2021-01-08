@@ -14,7 +14,10 @@
             <a :href="work.webUrl" target="_blank" v-if = 'work.webUrl'><span class="material-icons">language</span></a>
             <div class="controls">
                 <span class="material-icons" @click = 'handleDelete(work.id, work.filePath)'>delete</span>
-                <span class="material-icons" @click = 'handleUpdate(work.id)' >edit</span>
+                <router-link :to = "{name : 'EditLatestWork', params: { id: work.id } }">
+                    <span class="material-icons">edit</span>
+                </router-link>
+                
             </div>
         </div>
     </div>
@@ -34,11 +37,7 @@ export default {
             await deleteDoc(id)
         }
 
-        const handleUpdate = (id) => {
-            console.log('trying to update this ', id)
-        }
-
-        return { handleDelete, handleUpdate }
+        return { handleDelete }
     }
 }
 </script>
