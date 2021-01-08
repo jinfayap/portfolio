@@ -49,7 +49,7 @@ export default {
         const fileError = ref(null)
 
         const { error, updateDoc } = useCollection('latestwork')
-        const { uploadImage, deleteImage, url, filePath } = useStorage('portfolio')
+        const { uploadImage, deleteImage, url, filePath } = useStorage('portfolio', 'latestwork')
 
         const isPending = ref(false)
 
