@@ -2,20 +2,34 @@ import { ref } from 'vue'
 import { projectStorage } from '../firebase/config'
 import getUser from './getUser'
 
+// Generates Unique ID
+import { v4 as uuidv4 } from 'uuid'
+
 const { user } = getUser()
 
-const useStorage = (folder) => {
+const useStorage = (folder, subfolder = null) => {
 
     const error = ref(null)
     const url = ref(null)
     const filePath = ref(null)
 
     const uploadImage = async (file) => {
-        filePath.value = `${folder}/${user.value.uid}/${file.name}`
+
+        const uniqueId = uuidv4()
+        const lastIndex = file.name.lastIndexOf('.')
+        const name = file.name.slice(0, lastIndex) + '_' + uniqueId + file.name.slice(lastIndex)
+
+        if (subfolder === null) {
+            filePath.value = `${folder}/${user.value.uid}/${name}`
+        } else {
+            filePath.value = `${folder}/${user.value.uid}/${subfolder}/${name}`
+        }
+        
         const storageRef = projectStorage.ref(filePath.value)
 
         try {
             const res = await storageRef.put(file)
+            console.log(res)
             url.value = await res.ref.getDownloadURL()
         } catch (err) {
             console.log(err.message)
