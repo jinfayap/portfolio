@@ -5,6 +5,7 @@ import EditAboutMe from '../views/portfolio/EditAboutMe.vue'
 import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
 import AddLatestWork from '../views/portfolio/AddLatestWork.vue'
+import EditLatestWork from '../views/portfolio/EditLatestWork.vue'
 
 // auth guard
 
@@ -64,7 +65,15 @@ const routes = [
     name: 'AddLatestWork',
     component: AddLatestWork,
     beforeEnter: requireAuth
+  },
+  {
+    path: '/edit/latestwork/:id',
+    name: 'EditLatestWork',
+    component: EditLatestWork,
+    props: true,
+    beforeEnter: requireAuth
   }
+
 ]
 
 const router = createRouter({
