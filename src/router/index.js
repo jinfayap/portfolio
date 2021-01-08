@@ -4,7 +4,7 @@ import AddAboutMe from '../views/portfolio/AddAboutMe.vue'
 import EditAboutMe from '../views/portfolio/EditAboutMe.vue'
 import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
-import getUser from '../composable/getUser'
+import AddLatestWork from '../views/portfolio/AddLatestWork.vue'
 
 // auth guard
 
@@ -57,6 +57,12 @@ const routes = [
     name: 'EditAboutMe',
     component: EditAboutMe,
     props: true,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/add/latestwork',
+    name: 'AddLatestWork',
+    component: AddLatestWork,
     beforeEnter: requireAuth
   }
 ]
