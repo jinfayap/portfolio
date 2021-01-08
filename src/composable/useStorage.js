@@ -29,7 +29,6 @@ const useStorage = (folder, subfolder = null) => {
 
         try {
             const res = await storageRef.put(file)
-            console.log(res)
             url.value = await res.ref.getDownloadURL()
         } catch (err) {
             console.log(err.message)
