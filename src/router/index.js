@@ -6,6 +6,7 @@ import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
 import AddLatestWork from '../views/portfolio/AddLatestWork.vue'
 import EditLatestWork from '../views/portfolio/EditLatestWork.vue'
+import AddCertificate from '../views/portfolio/AddCertificate.vue'
 
 // auth guard
 
@@ -71,6 +72,12 @@ const routes = [
     name: 'EditLatestWork',
     component: EditLatestWork,
     props: true,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/add/certificate',
+    name: 'AddCertificate',
+    component: AddCertificate,
     beforeEnter: requireAuth
   }
 
