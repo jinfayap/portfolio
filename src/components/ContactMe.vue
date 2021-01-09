@@ -123,14 +123,17 @@ textarea {
   justify-content: space-evenly;
   align-items: flex-start;
 }
+.social-media div:nth-child(4) {
+  flex-direction: row;
+  align-items: center;
+}
+.social-media div:nth-child(4) span{
+  margin-left: 30px;
+  font-size: 10px;
+  font-weight: 300;
+}
 .social-media div img {
   max-height: 50px;
-  display: inline-block;
-}
-.social-media div span {
-  font-size: 10px;
-  margin-left: 60px;
-  font-weight: 300;
 }
 
 </style>
