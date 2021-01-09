@@ -2,17 +2,23 @@
   <div class="section">
     <h3 class="header">Contact Me</h3>
     <div class="contactme">
-      <div class="social-media">
-        <h3>Also can find me at: </h3>
-        <div><a href="#"><img src="../assets/images/icons/github.png"></a></div>
-        <div><a href="#"><img src="../assets/images/icons/linkedin.png"></a></div>
-        <div class = 'mail'>
-          <img src="../assets/images/icons/mail.png">
-          <span>
-            
-          </span>
+
+      <div v-if = 'contacts' class="social-media">
+        <div v-for = 'contact in contacts' :key = 'contact.id'>
+
+              <h3>Also can find me at: </h3>
+              <div><a :href="contact.github"><img src="../assets/images/icons/github.png"></a></div>
+              <div><a :href="contact.linkedin"><img src="../assets/images/icons/linkedin.png"></a></div>
+              <div>
+                <img src="../assets/images/icons/mail.png">
+                <span>{{ contact.email }}</span>
+                </div>
+              <router-link :to = "{ name: 'EditContactMe', params: {id : contact.id}}">
+                <button>Edit Contact Me</button>
+              </router-link>
         </div>
       </div>
+
       <div class="contact-details">
         <form>
           <div class="inputBox">
@@ -36,15 +42,19 @@
         </form>
       </div>
     </div>
-    <button>Edit Contact Me</button>
+    
   </div>
   
 </template>
 
 <script>
+import getNRTCollection from '@/composable/getNRTCollection'
+
 export default {
   setup() {
+    const { documents: contacts, error } = getNRTCollection('contactme')
 
+    return { contacts }
   }
 }
 </script>
@@ -104,19 +114,23 @@ textarea {
   padding: 10px;
   margin-bottom: 10px;
 }
-.social-media {
+.social-media{
+  display: flex;
+}
+.social-media div {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: start;
-  margin: 0 auto;
+  align-items: flex-start;
 }
 .social-media div img {
   max-height: 50px;
+  display: inline-block;
 }
 .social-media div span {
-  font-size: 15px;
-  margin-left: 20px;
+  font-size: 10px;
+  margin-left: 60px;
   font-weight: 300;
 }
+
 </style>
