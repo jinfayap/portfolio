@@ -14,7 +14,10 @@
                 <p>Interested parties, course can be found <a :href="certificate.webUrl" target = "_blank"><span>here</span></a></p>
             </div>
             <div>
-                <button>Edit Certificate</button>
+                <router-link :to = "{ name: 'EditCertificate', params: { id: certificate.id} }">
+                    <button>Edit Certificate</button>
+                </router-link>
+
                 <button @click = 'handleDelete'>Delete Certificate</button>
             </div>
         </div>
