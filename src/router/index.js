@@ -7,6 +7,7 @@ import Signup from '../views/auth/Signup.vue'
 import AddLatestWork from '../views/portfolio/AddLatestWork.vue'
 import EditLatestWork from '../views/portfolio/EditLatestWork.vue'
 import AddCertificate from '../views/portfolio/AddCertificate.vue'
+import CertificateInfo from '../views/portfolio/CertificateInfo.vue'
 
 // auth guard
 
@@ -79,6 +80,12 @@ const routes = [
     name: 'AddCertificate',
     component: AddCertificate,
     beforeEnter: requireAuth
+  },
+  {
+    path: '/certificate/:id',
+    name: 'CertificateInfo',
+    component: CertificateInfo,
+    props: true
   }
 
 ]
