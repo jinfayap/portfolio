@@ -11,6 +11,7 @@ const getDocument = (collection, id) => {
         const res = await docRef.get()
         if (res.data()) {
             document.value = { ...res.data(), id: res.id }
+            error.value = null
         } else {
             error.value = 'that document does not exists'
         }
