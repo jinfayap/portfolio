@@ -4,6 +4,7 @@
     <Skills />
     <LatestWork />
     <Certificates />
+    <ContactMe />
   </div>
 </template>
 
@@ -12,9 +13,10 @@ import About from '@/components/About.vue'
 import Skills from '@/components/Skills.vue'
 import LatestWork from '@/components/LatestWork.vue'
 import Certificates from '@/components/Certificates.vue'
+import ContactMe from '@/components/ContactMe.vue'
 
 export default {
   name: 'Home',
-  components: { About, Skills, LatestWork, Certificates }
+  components: { About, Skills, LatestWork, Certificates, ContactMe }
 }
 </script>
