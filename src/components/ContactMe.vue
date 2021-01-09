@@ -7,8 +7,8 @@
         <div v-for = 'contact in contacts' :key = 'contact.id'>
 
               <h3>Also can find me at: </h3>
-              <div><a :href="contact.github"><img src="../assets/images/icons/github.png"></a></div>
-              <div><a :href="contact.linkedin"><img src="../assets/images/icons/linkedin.png"></a></div>
+              <div><a :href="contact.linkedin" target = '_blank'><img src="../assets/images/icons/linkedin.png"></a></div>
+              <div><a :href="contact.github" target = '_blank'><img src="../assets/images/icons/github.png"></a></div>
               <div>
                 <img src="../assets/images/icons/mail.png">
                 <span>{{ contact.email }}</span>
