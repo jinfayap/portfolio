@@ -50,7 +50,7 @@ const useStorage = (folder, subfolder = null) => {
        
     }
 
-    return { url, filePath, uploadImage, deleteImage }
+    return { url, filePath, uploadImage, deleteImage, error }
 }
 
 export default useStorage
