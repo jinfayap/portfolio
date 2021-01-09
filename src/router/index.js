@@ -8,6 +8,7 @@ import AddLatestWork from '../views/portfolio/AddLatestWork.vue'
 import EditLatestWork from '../views/portfolio/EditLatestWork.vue'
 import AddCertificate from '../views/portfolio/AddCertificate.vue'
 import CertificateInfo from '../views/portfolio/CertificateInfo.vue'
+import EditCertificate from '../views/portfolio/EditCertificate.vue'
 
 // auth guard
 
@@ -86,6 +87,13 @@ const routes = [
     name: 'CertificateInfo',
     component: CertificateInfo,
     props: true
+  },
+  {
+    path: '/edit/certificate/:id',
+    name: 'EditCertificate',
+    component: EditCertificate,
+    props: true,
+    beforeEnter: requireAuth
   }
 
 ]
