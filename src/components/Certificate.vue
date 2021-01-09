@@ -2,7 +2,10 @@
     <div class = 'singleCert'>
         <div class = 'cert-header'>
             <div class="cert-title">
-                {{ certificate.title }}
+                <router-link :to = "{name : 'CertificateInfo', params: { id: certificate.id }}" class = 'blackbg-visit'>
+                    {{ certificate.title }}
+                </router-link>
+                
                 <a :href="certificate.webUrl" class = 'cert-web'>
                     <span class = 'material-icons'>open_in_browser</span>
                 </a>
@@ -24,7 +27,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .singleCert {
     width: 500px;
     min-height: 370px;
@@ -50,6 +53,7 @@ export default {
     letter-spacing: 2px;
     font-size: 16px;
     margin: 1em 0;
+    color: white;
 }
 .cert-provider {
     font-size: 10px;
@@ -57,5 +61,8 @@ export default {
     padding-right: 7em;
     margin-top: 10px;
     font-weight: 500;
+}
+.blackbg-visit:visited {
+    color: white;
 }
 </style>
