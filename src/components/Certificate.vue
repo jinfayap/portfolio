@@ -2,7 +2,7 @@
     <div class = 'singleCert'>
         <div class = 'cert-header'>
             <div class="cert-title">
-                <router-link :to = "{name : 'CertificateInfo', params: { id: certificate.id }}" class = 'blackbg-visit'>
+                <router-link :to = "{name : 'CertificateInfo', params: { id: certificate.id } }" class = 'blackbg-visit'>
                     {{ certificate.title }}
                 </router-link>
                 
@@ -44,7 +44,7 @@ export default {
     font-size: 22px;
 }
 .cert-header img {
-    max-height: 400px;
+    max-height: 260px;
     max-width: 350px;
     object-fit: cover;
 }
