@@ -72,32 +72,43 @@ export default {
     height: 100%;
     position: relative;
 }
-
 .skills .toggleSkill button {
     display: block;
     margin: 10px auto;
 }
 .skillset {
-    margin-bottom: 1em;
-    width: 100%;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: rows;
+    flex-wrap: wrap;
+    /* flex-basis: 50%; */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
 }
 .skill-pill {
     border: 1px solid white;
-    border-radius: 30px;
-    margin: 10px auto;
-    width: 75%;
-    text-align: center;
+    border-radius: 20px;
+    display: flex;
+    width: 45%;
+    margin: 10px;
+    padding: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 }
 .skill-value {
-    display: inline-block;
-    margin: 10px 20px;
-    width: 15%;
-    font-weight: 500;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+    margin-right: 5px;
+    width: 35%;
+    justify-content: center;
 }
 .skillbar {
-    display: inline-block;
-    border: 1px solid white;
-    width: 60%;
+    outline: 1px solid white;
+    width: 50%;
     position: relative;
 }
 .percentage {
@@ -108,12 +119,11 @@ export default {
     height: 100%;
 }
 .controls {
-    display: inline-block;
-    width: 15%;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 5px;
 }
 .controls span {
-    margin-left: 5px;
     cursor: pointer;
-    font-size: 20px;
 }
 </style>
