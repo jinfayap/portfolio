@@ -110,6 +110,7 @@ export default {
     outline: 1px solid white;
     width: 50%;
     position: relative;
+    text-align: center;
 }
 .percentage {
     position: absolute;
