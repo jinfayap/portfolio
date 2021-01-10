@@ -122,8 +122,14 @@ export default {
     display: flex;
     flex-wrap: nowrap;
     margin-left: 5px;
+    border: 1px solid white;
+    align-items: center;
+    justify-content: space-between;
 }
 .controls span {
     cursor: pointer;
+}
+.controls span.material-icons {
+    font-size: 18px;
 }
 </style>
