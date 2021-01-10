@@ -77,7 +77,6 @@ export default {
     margin: 10px auto;
 }
 .skillset {
-    border: 1px solid white;
     display: flex;
     flex-direction: rows;
     flex-wrap: wrap;
