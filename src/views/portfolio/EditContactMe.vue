@@ -14,9 +14,13 @@
 import getDocument from '@/composable/getDocument'
 import useCollection from '@/composable/useCollection'
 import { useRouter } from 'vue-router'
+import getUser from '@/composable/getUser'
+
 export default {
     props: [ 'id' ],
     setup(props) {
+        const { user } = getUser()
+
         const { document: contact, error } = getDocument('contactme', props.id)
         const { updateDoc, error: updateError, isPending } = useCollection('contactme')
 
@@ -26,7 +30,8 @@ export default {
             const doc = {
                 email: contact.value.email,
                 github: contact.value.github,
-                linkedin: contact.value.linkedin
+                linkedin: contact.value.linkedin,
+                userId: user.value.uid
             }
             await updateDoc(doc, props.id)
 
