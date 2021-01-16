@@ -6,7 +6,7 @@
               <Certificate :certificate = certificate />
           </div>
       </div>
-      <router-link :to = "{ name: 'AddCertificate' }">
+      <router-link :to = "{ name: 'AddCertificate' }" v-if = 'ownership'>
             <button>Add new Certificate</button>
       </router-link>
 
@@ -14,15 +14,23 @@
 </template>
 
 <script>
+import { ref, computed } from 'vue'
 import getNRTCollection from '@/composable/getNRTCollection'
 import Certificate from './Certificate.vue'
+import getUser from '@/composable/getUser'
 
 export default {
     components: { Certificate },
     setup() {
+        const { user } = getUser()
+
         const { documents:certificates, error } = getNRTCollection('certificates')
 
-        return { certificates, error }
+        const ownership = computed(() => {
+            return certificates && user.value
+        }) 
+
+        return { certificates, error, ownership }
     }
 }
 </script>

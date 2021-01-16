@@ -18,7 +18,7 @@
 
       <AddSkill v-show = '!showAddSkill'/>
 
-      <div class = 'toggleSkill'>
+      <div class = 'toggleSkill' v-if = 'ownership'>
         <button v-if = 'showAddSkill' @click = 'showAddSkill = !showAddSkill'>Add a New Skill</button>
         <button v-else @click = 'showAddSkill = !showAddSkill'>Hide form </button>
       </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import getNRTCollection from '@/composable/getNRTCollection'
 import useCollection from '@/composable/useCollection'
 import getUser from '@/composable/getUser'
@@ -43,6 +43,8 @@ import EditSkill from './EditSkill'
 export default {
     components: { AddSkill, EditSkill },
     setup() {
+        const { user } = getUser()
+
         const showAddSkill = ref(true)
 
         const { documents:skills, error } = getNRTCollection('skills')
@@ -61,7 +63,11 @@ export default {
             console.log('Document successfully deleted')
         }
 
-        return { showAddSkill, error, skills, showOverlay, docIdProps, handleUpdate, handleDelete}
+        const ownership = computed(() => {
+            return skills && user.value
+        }) 
+
+        return { showAddSkill, error, skills, showOverlay, docIdProps, handleUpdate, handleDelete, ownership}
     }
 }
 </script>

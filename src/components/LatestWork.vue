@@ -8,7 +8,7 @@
             </div>
         </div>
         
-        <router-link :to = "{ name: 'AddLatestWork' }">
+        <router-link :to = "{ name: 'AddLatestWork' }" v-if = 'ownership'>
             <button>Add a Latest Work</button>
         </router-link>
 
@@ -16,16 +16,23 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import getNRTCollection from '@/composable/getNRTCollection'
 import SingleWork from './SingleWork.vue'
+import getUser from '@/composable/getUser'
 
 export default {
     components: { SingleWork },
     setup() {      
+        const { user } = getUser()
+
         const { documents:works, error } = getNRTCollection('latestwork')
 
-        return { works, error }
+        const ownership = computed(() => {
+            return works && user.value
+        }) 
+
+        return { works, error, ownership }
     }
 }
 </script>

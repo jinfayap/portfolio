@@ -12,7 +12,7 @@
         </div>
         <div class="work-footer">
             <a :href="work.webUrl" target="_blank" v-if = 'work.webUrl'><span class="material-icons">language</span></a>
-            <div class="controls">
+            <div class="controls" v-if = 'ownership'>
                 <span class="material-icons" @click = 'handleDelete(work.id, work.filePath)'>delete</span>
                 <router-link :to = "{name : 'EditLatestWork', params: { id: work.id } }">
                     <span class="material-icons">edit</span>
@@ -24,11 +24,15 @@
 </template>
 
 <script>
+import { ref, computed } from 'vue'
+import getUser from '@/composable/getUser'
 import useCollection from '@/composable/useCollection'
 import useStorage from '@/composable/useStorage'
+
 export default {
     props: [ 'work' ],
-    setup() {
+    setup(props) {
+        const { user } = getUser()
         const { deleteImage } = useStorage('portfolio')
         const { deleteDoc } = useCollection('latestwork')
 
@@ -37,7 +41,11 @@ export default {
             await deleteDoc(id)
         }
 
-        return { handleDelete }
+        const ownership = computed(() => {
+            return props.work && user.value
+        }) 
+
+        return { handleDelete, ownership }
     }
 }
 </script>

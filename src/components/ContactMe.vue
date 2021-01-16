@@ -13,7 +13,7 @@
                 <img src="../assets/images/icons/mail.png">
                 <span>{{ contact.email }}</span>
                 </div>
-              <router-link :to = "{ name: 'EditContactMe', params: {id : contact.id}}">
+              <router-link :to = "{ name: 'EditContactMe', params: {id : contact.id}}" v-if = 'ownership'>
                 <button>Edit Contact Me</button>
               </router-link>
         </div>
@@ -36,7 +36,7 @@
             <label>Subject:</label>
           </div>
 
-          <textarea placeholder = 'Your message' required disabled></textarea>
+          <textarea placeholder = 'Function currently not available. In progress' required disabled></textarea>
           <button disabled>Submit</button>
 
         </form>
@@ -48,13 +48,21 @@
 </template>
 
 <script>
+import { ref, computed } from 'vue'
 import getNRTCollection from '@/composable/getNRTCollection'
+import getUser from '@/composable/getUser'
 
 export default {
   setup() {
+    const { user } = getUser()
+
     const { documents: contacts, error } = getNRTCollection('contactme')
 
-    return { contacts }
+    const ownership = computed(() => {
+        return contacts && user.value
+    }) 
+
+    return { contacts, ownership }
   }
 }
 </script>
