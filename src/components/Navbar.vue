@@ -9,9 +9,9 @@
               <router-link :to = "{ name : 'Login' }">
                 <button>Login</button>
               </router-link>
-              <router-link :to = "{ name : 'Signup'}">
+              <!-- <router-link :to = "{ name : 'Signup'}">
                 <button>Sign up</button>
-              </router-link>
+              </router-link> -->
           </div>
           <div v-else>
               <button v-if = '!isPending' @click = 'handleClick'>Logout</button>

@@ -3,7 +3,7 @@ import Home from '../views/portfolio/Home.vue'
 import AddAboutMe from '../views/portfolio/AddAboutMe.vue'
 import EditAboutMe from '../views/portfolio/EditAboutMe.vue'
 import Login from '../views/auth/Login.vue'
-import Signup from '../views/auth/Signup.vue'
+// import Signup from '../views/auth/Signup.vue'
 import AddLatestWork from '../views/portfolio/AddLatestWork.vue'
 import EditLatestWork from '../views/portfolio/EditLatestWork.vue'
 import AddCertificate from '../views/portfolio/AddCertificate.vue'
@@ -45,12 +45,12 @@ const routes = [
     component: Login,
     beforeEnter: requireNoAuth
   },
-  {
-    path: '/signup',
-    name: 'Signup',
-    component: Signup,
-    beforeEnter: requireNoAuth
-  },
+  // {
+  //   path: '/signup',
+  //   name: 'Signup',
+  //   component: Signup,
+  //   beforeEnter: requireNoAuth
+  // },
   {
     path: '/add/aboutme',
     name: 'AddAboutMe',

@@ -6,7 +6,7 @@
     <p v-if = 'error' class = 'error'>{{ error }}</p>
     <button v-if = '!isPending'>Login</button>
     <button v-if = 'isPending' disabled>Logging in</button>
-    <p>New to the page? <router-link :to = "{name: 'Signup'}"><span>Sign up</span></router-link> here</p>
+    <!-- <p>New to the page? <router-link :to = "{name: 'Signup'}"><span>Sign up</span></router-link> here</p> -->
   </form>
 </template>
 
