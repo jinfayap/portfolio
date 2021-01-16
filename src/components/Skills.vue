@@ -9,7 +9,7 @@
                   <span :style = "{color: 'black', 'user-select': 'none'}">{{ skill.proficiency }}</span>
                   <span class = 'percentage' :style = "{width: skill.proficiency + '%'}">{{ skill.proficiency }}%</span>
               </div>
-              <div class="controls">
+              <div class="controls" v-if = 'ownership'>
                   <span class="material-icons" @click = 'handleDelete(skill.id)'>delete</span>
                   <span class="material-icons" @click = 'handleUpdate(skill.id)' >edit</span>
               </div>
