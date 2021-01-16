@@ -13,7 +13,7 @@
             <div class = 'cert-info-link'>
                 <p>Interested parties, course can be found <a :href="certificate.webUrl" target = "_blank"><span>here</span></a></p>
             </div>
-            <div>
+            <div v-if = 'ownership'>
                 <router-link :to = "{ name: 'EditCertificate', params: { id: certificate.id} }">
                     <button>Edit Certificate</button>
                 </router-link>
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { ref, computed } from 'vue'
+import getUser from '@/composable/getUser'
 import getDocument from '@/composable/getDocument'
 import useCollection from '@/composable/useCollection'
 import useStorage from '@/composable/useStorage'
@@ -36,6 +38,8 @@ export default {
 
         const route = useRoute()
         const router = useRouter()
+
+        const { user } = getUser()
 
         const { document: certificate, error } = getDocument('certificates', route.params.id)
         const { deleteDoc, error: deleteError} = useCollection('certificates')
@@ -49,9 +53,13 @@ export default {
                     router.push({ name: 'Home' })
                 }
             }
-
         }
-        return { certificate, error, handleDelete }
+
+        const ownership = computed(() => {
+            return certificate && user.value
+        }) 
+
+        return { certificate, error, handleDelete, ownership }
     }
 }
 </script>
