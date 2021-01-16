@@ -1,0 +1,128 @@
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap');
+/* Either add this material-design import here or in main.js */
+@import '~material-design-icons/iconfont/material-icons.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --primary: #1b1b1b;
+    --secondary: #727272;
+    --warning: #ff0000;
+}
+
+.header {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: var(--primary);
+}
+/* Form */
+
+form {
+    max-width: 500px;
+    margin : 0 auto;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--secondary);
+    background: white;
+}
+input, textarea, select{
+    border: 0;
+    border-bottom: 1px solid var(--secondary);
+    padding: 10px;
+    outline: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 20px auto;
+}
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* Button */
+button, .btn {
+    background: var(--secondary);
+    border: 0;
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+button:hover, .btn:hover {
+    background: var(--primary);
+    color: white;
+}
+button:disabled {
+    opacity: 0.5;
+    color: var(--primary);
+    background: var(--secondary);
+    cursor: not-allowed;
+}
+
+/* error text */
+.error {
+    color: var(--warning);
+    font-size: 14px;
+    margin: 16px 0;
+}
+
+/* section */
+.section {
+    padding: 20px 0;
+    margin: 20px 0;
+    min-height: 50vh;
+}
+/* Black Background */
+.blackbg {
+    background: black;
+    color: white;
+}
+
+/* Overlay */
+.overlay {
+    background-color: black;
+    width: 100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    position: absolute
+}
+
+/* Center */
+.center-box {
+    width: 100%;
+    height:100%;
+    position: relative;
+}
+.center {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+/* material icon */
+span.material-icons {
+    margin :0;
+    font-size: 24px;
+} 
