@@ -56,6 +56,9 @@ export default {
   margin: 20px 0;
   gap: 10px;
 }
+.about .description {
+  font-size: 20px;
+}
 .img img {
   max-height: 200px;
   max-width: 200px;
