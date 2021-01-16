@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div v-if="!documents">
+    <div v-if="!documents && user">
       <router-link :to="{ name: 'AddAboutMe' }">
         <button>Add About Me</button>
       </router-link>
@@ -44,7 +44,7 @@ export default {
       return documents.value && user.value && documents.value[0].userId == user.value.uid
     })
 
-    return { documents, error, ownership };
+    return { documents, error, ownership, user};
   },
 };
 </script>
