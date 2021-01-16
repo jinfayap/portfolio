@@ -74,11 +74,10 @@ export default {
     font-size: 10px;
 }
 .workCard .work-information {
-    /* border: 1px solid red; */
     margin: 0;
     padding: 10px;
     font-size: 13px;
-    height: 44%;
+    height: 42%;
     text-align: start;
     overflow-y: scroll;
     scrollbar-width: none; /* Firefox */
