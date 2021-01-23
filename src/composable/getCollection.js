@@ -11,7 +11,7 @@ const useCollection = (collection) => {
 
     const unsub = collectionRef.onSnapshot(snapshot => {
         let results = []
-        console.log(snapshot)
+        // console.log(snapshot)
         snapshot.docs.forEach(doc => {
              doc.data().createdAt && results.push({...doc.data(), id: doc.id})
         })
