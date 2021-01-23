@@ -1,4 +1,5 @@
 <template>
+    <div class="header">Single Blog Details</div>
   <div class = 'blog-details'>
       <div class="blog-details-content" v-if = 'blog'>
           <div class="blog-details-title header">
@@ -10,15 +11,18 @@
           </div>
           <div class="blog-details-tag">
               <div class = 'tag-box'>
-          Current tags:
-          <div v-for = 'tagname in blog.tagList' :key = tagname >
-            <span class = 'tagpill' @click = 'handleClick(tagname)'>{{tagname}}</span>
-         </div>
+            Current tags:
+            <div v-for = 'tagname in blog.tagList' :key = tagname >
+                <span class = 'tagpill' @click = 'handleClick(tagname)'>{{tagname}}</span>
+            </div>
       </div>
           </div>
       </div>
       <div class="blog-details control">
-          <button>Edit Blog</button>
+          Controls:
+          <router-link :to = "{ name: 'EditSingleBlog', params: { id: id} }">
+              <button>Edit Blog</button>
+          </router-link>
           <button @click = 'handleDelete'>Delete Blog</button>
       </div>
   </div>
@@ -62,10 +66,11 @@ export default {
     gap: 10px;
 }
 .blog-details-content {
-    border: 1px solid red;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
 }
 .blog-details.control {
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -79,5 +84,8 @@ export default {
     width: 100%;
     max-height: 400px;
     object-fit: cover;
+}
+.blog-details-tag {
+    margin-top: 20px;
 }
 </style>
