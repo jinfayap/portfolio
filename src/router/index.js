@@ -122,7 +122,8 @@ const routes = [
   {
     path: '/blog/:id',
     name: 'ViewBlogDetails',
-    component: ViewBlogDetails
+    component: ViewBlogDetails,
+    props: true
   }
 
 ]
