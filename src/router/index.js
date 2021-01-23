@@ -14,6 +14,7 @@ import EditContactMe from '../views/portfolio/EditContactMe'
 
 // Blog imports
 import Blog from '../views/blog/Blog.vue'
+import AddNewBlog from '../views/blog/AddNewBlog.vue'
 
 // auth guard
 
@@ -111,6 +112,11 @@ const routes = [
     path: '/blog',
     name: 'Blog',
     component: Blog
+  },
+  {
+    path: '/blog/addnewblog',
+    name: 'AddNewBlog',
+    component: AddNewBlog
   }
 
 ]
