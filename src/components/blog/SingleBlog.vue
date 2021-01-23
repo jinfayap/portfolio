@@ -58,6 +58,7 @@ export default {
 .blog-image-box img {
     width: 100%;
     max-height: 180px;
+    object-fit: cover;
 }
 .blog-description, 
 .blog-image-box,
