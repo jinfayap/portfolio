@@ -1,9 +1,16 @@
 <template>
   <nav>
-      <router-link :to = "{ name: 'Home'} ">
-          <h2>Home</h2>
-      </router-link>
-      
+      <div class = 'basic-nav'>
+        <router-link :to = "{ name: 'Home'} ">
+            <h2>Home</h2>
+        </router-link>
+
+        <router-link :to = "{ name: 'Blog'} ">
+            <h2>Blog</h2>
+        </router-link>
+      </div>
+
+
       <div class="nav-links">
           <div v-if = '!user'>
               <router-link :to = "{ name : 'Login' }">
@@ -50,6 +57,13 @@ nav {
     padding: 10px 20px;
     background-color: rgb(16, 212, 212);
     margin-bottom: 2.5em;
+}
+.basic-nav {
+    display: flex;
+    flex-direction: row;
+}
+.basic-nav a:last-child{
+    margin-left: 40px;
 }
 .nav-links {
     display: flex;
