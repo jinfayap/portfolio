@@ -30,6 +30,7 @@
     "@ckeditor/ckeditor5-vue": "^2.0.1",
     "@ckeditor/ckeditor5-word-count": "^24.0.0",
     "core-js": "^3.6.5",
+    "date-fns": "^2.16.1",
     "firebase": "^8.2.1",
     "material-design-icons": "^3.0.1",
     "postcss-loader": "^3.0.0",
