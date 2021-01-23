@@ -16,6 +16,7 @@ import EditContactMe from '../views/portfolio/EditContactMe'
 import Blog from '../views/blog/Blog.vue'
 import AddNewBlog from '../views/blog/AddNewBlog.vue'
 import ViewBlogDetails from '../views/blog/ViewBlogDetails.vue'
+import EditSingleBlog from '../views/blog/EditSingleBlog.vue'
 
 // auth guard
 
@@ -123,6 +124,12 @@ const routes = [
     path: '/blog/:id',
     name: 'ViewBlogDetails',
     component: ViewBlogDetails,
+    props: true
+  },
+  {
+    path: '/blog/edit/:id',
+    name: 'EditSingleBlog',
+    component: EditSingleBlog,
     props: true
   }
 
