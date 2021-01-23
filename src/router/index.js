@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+// Portfolio Imports
 import Home from '../views/portfolio/Home.vue'
 import AddAboutMe from '../views/portfolio/AddAboutMe.vue'
 import EditAboutMe from '../views/portfolio/EditAboutMe.vue'
@@ -10,6 +11,9 @@ import AddCertificate from '../views/portfolio/AddCertificate.vue'
 import CertificateInfo from '../views/portfolio/CertificateInfo.vue'
 import EditCertificate from '../views/portfolio/EditCertificate.vue'
 import EditContactMe from '../views/portfolio/EditContactMe'
+
+// Blog imports
+import Blog from '../views/blog/Blog.vue'
 
 // auth guard
 
@@ -102,6 +106,11 @@ const routes = [
     component: EditContactMe,
     props: true,
     beforeEnter: requireAuth
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: Blog
   }
 
 ]
