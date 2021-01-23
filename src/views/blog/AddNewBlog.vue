@@ -198,6 +198,8 @@ export default {
                     title: title.value,
                     description: description.value,
                     tagList: tagList.value,
+                    filePath: null,
+                    imageUrl: null,
                     createdAt: timestamp()
                 }
                 await addDoc(doc)
