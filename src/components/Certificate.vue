@@ -62,6 +62,9 @@ export default {
     margin-top: 10px;
     font-weight: 500;
 }
+.blackbg-visit {
+    color: white;
+}
 .blackbg-visit:visited {
     color: white;
 }
