@@ -1,6 +1,9 @@
 <template>
     <div class = 'singleblog-box'>
-        <h2 class = 'blog-title'> {{blog.title}} </h2>
+        <router-link :to = "{ name: 'ViewBlogDetails', params: { id: blog.id }}" class = 'blog-link'>
+            <h2 class = 'blog-title'> {{blog.title}} </h2>
+        </router-link>
+        
         <div class = 'blog-description' v-html = 'blog.description'></div>
         <div v-if = 'blog.imageUrl' class = 'blog-image-box'>
             <img :src="blog.imageUrl">
@@ -27,6 +30,7 @@ export default {
         const longAgo = computed(() => {
             return formatDistanceToNow(new Date(props.blog.createdAt.seconds *1000))
         })
+
         return { longAgo }
     }
 }
@@ -75,5 +79,9 @@ export default {
     right: 10px;
     font-size: 10px;
     font-weight: 400;
+}
+.blog-link a:visited,
+.blog-link{
+    color: black;
 }
 </style>
