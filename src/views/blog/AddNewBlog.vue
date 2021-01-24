@@ -30,11 +30,14 @@ import useCollection from '@/composable/useCollection'
 import { timestamp } from '@/firebase/config'
 import { useRouter } from 'vue-router'
 import ckEditConfig from '@/assets/ckEditConfig.js'
+import getUser from '@/composable/getUser'
 
 export default {
     setup() {
         const { editor, editorConfig, wordsCount, charsCount } = ckEditConfig()
         const router = useRouter()
+
+        const { user } = getUser()
 
         const { uploadImage, url, filePath } = useStorage('blogs')
         const { addDoc, error } = useCollection('blogs')
@@ -59,7 +62,8 @@ export default {
                     tagList: tagList.value,
                     imageUrl: url.value,
                     filePath: filePath.value,
-                    createdAt: timestamp()
+                    createdAt: timestamp(),
+                    userId: user.value.uid
                 }
                 await addDoc(doc)
             } else {
@@ -69,7 +73,8 @@ export default {
                     tagList: tagList.value,
                     filePath: null,
                     imageUrl: null,
-                    createdAt: timestamp()
+                    createdAt: timestamp(),
+                    userId: user.value.uid
                 }
                 await addDoc(doc)
             }
