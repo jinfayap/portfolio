@@ -16,6 +16,7 @@
               <button>Add a new Blog Post</button>
           </router-link>
           <!-- Cloud tag -->
+          <TagCloud :blogs = blogs />
       </div>
   </div>
 </template>
@@ -23,9 +24,10 @@
 <script>
 import getCollection from '@/composable/getCollection'
 import SingleBlog from '@/components/blog/SingleBlog.vue'
+import TagCloud from '@/components/blog/TagCloud.vue'
 
 export default {
-    components: { SingleBlog },
+    components: { SingleBlog, TagCloud },
     setup() {
         const { documents:blogs, error } = getCollection('blogs')
         return { blogs, error }
