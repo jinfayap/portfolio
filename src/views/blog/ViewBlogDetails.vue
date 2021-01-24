@@ -11,7 +11,6 @@
           </div>
           <div class="blog-details-tag">
               <div class = 'tag-box'>
-            Current tags:
             <div v-for = 'tagname in blog.tagList' :key = tagname >
                 <span class = 'tagpill' @click = 'handleClick(tagname)'>{{tagname}}</span>
             </div>
@@ -42,7 +41,7 @@ export default {
     setup(props) {
         const { document:blog } = getDocument('blogs', props.id);
         const { deleteDoc, error: deleteError} = useCollection('blogs')
-        const { deleteImage, error: deleteImageError } = useStorage('blogs')
+        const { deleteImage } = useStorage('blogs')
         
         const router = useRouter()
         const { user } = getUser()
