@@ -1,5 +1,5 @@
 <template>
-    <h3 class = 'header'>Tags:</h3>
+   <h3 v-if = 'compliedTags' class = 'header' >Tags:</h3>
   <div v-if = 'compliedTags' class = 'tag-cloud-box'>
     <div v-for = 'tag in compliedTags' :key = tag >
         <router-link :to = "{ name: 'TagView', params: {tag : tag}} ">
