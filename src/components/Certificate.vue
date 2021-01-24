@@ -6,9 +6,9 @@
                     {{ certificate.title }}
                 </router-link>
                 
-                <a :href="certificate.webUrl" class = 'cert-web'>
+                <!-- <a :href="certificate.webUrl" class = 'cert-web'>
                     <span class = 'material-icons'>open_in_browser</span>
-                </a>
+                </a> -->
             </div>
             <img :src="certificate.imageUrl" alt="">
         </div>
