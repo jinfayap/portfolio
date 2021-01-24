@@ -67,5 +67,6 @@ module.exports = {
                     minify: true
                 } );
             } );
-    }
+    },
+    parallel: false
 };
