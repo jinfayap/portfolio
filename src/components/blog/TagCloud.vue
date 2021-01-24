@@ -1,8 +1,11 @@
 <template>
-  tag cloud template
-  <div v-if = 'compliedTags'>
+    <h3 class = 'header'>Tags:</h3>
+  <div v-if = 'compliedTags' class = 'tag-cloud-box'>
     <div v-for = 'tag in compliedTags' :key = tag >
-        <span># {{ tag }} </span>
+        <router-link :to = "{ name: 'TagView', params: {tag : tag}} ">
+            <span>#{{ tag }} </span>
+        </router-link>
+        
     </div>
   </div>
   
@@ -31,5 +34,21 @@ export default {
 </script>
 
 <style>
-
+.tag-cloud-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.tag-cloud-box span {
+    margin: 2.5;
+    color: black;
+    font-weight: 300;
+    letter-spacing: 2px;
+    display: inline-block;
+    padding: 10px;
+}
+.tag-cloud-box a.router-link-active.router-link-exact-active span {
+    color: orange;
+}
 </style>
