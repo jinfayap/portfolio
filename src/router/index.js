@@ -17,6 +17,7 @@ import Blog from '../views/blog/Blog.vue'
 import AddNewBlog from '../views/blog/AddNewBlog.vue'
 import ViewBlogDetails from '../views/blog/ViewBlogDetails.vue'
 import EditSingleBlog from '../views/blog/EditSingleBlog.vue'
+import TagView from '../views/blog/TagView.vue'
 
 // auth guard
 
@@ -130,6 +131,12 @@ const routes = [
     path: '/blog/edit/:id',
     name: 'EditSingleBlog',
     component: EditSingleBlog,
+    props: true
+  },
+  {
+    path: '/blog/tag/:tag',
+    name: 'TagView',
+    component: TagView,
     props: true
   }
 
