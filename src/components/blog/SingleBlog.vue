@@ -11,7 +11,9 @@
       <div class = 'tag-box blog-tag-box'>
           Current tags:
           <div v-for = 'tagname in blog.tagList' :key = tagname >
-            <span class = 'tagpill'>{{tagname}}</span>
+              <router-link :to = "{name: 'TagView', params: { tag: tagname } }">
+                  <span class = 'tagpill'>{{tagname}}</span>
+              </router-link>
          </div>
       </div>
       <div class = 'time-created'>
