@@ -119,7 +119,8 @@ const routes = [
   {
     path: '/blog/addnewblog',
     name: 'AddNewBlog',
-    component: AddNewBlog
+    component: AddNewBlog,
+    beforeEnter: requireAuth 
   },
   {
     path: '/blog/:id',
@@ -131,7 +132,8 @@ const routes = [
     path: '/blog/edit/:id',
     name: 'EditSingleBlog',
     component: EditSingleBlog,
-    props: true
+    props: true,
+    beforeEnter: requireAuth
   },
   {
     path: '/blog/tag/:tag',
