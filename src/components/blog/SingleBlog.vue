@@ -11,7 +11,7 @@
       <div class = 'tag-box blog-tag-box'>
           Current tags:
           <div v-for = 'tagname in blog.tagList' :key = tagname >
-            <span class = 'tagpill' @click = 'handleClick(tagname)'>{{tagname}}</span>
+            <span class = 'tagpill'>{{tagname}}</span>
          </div>
       </div>
       <div class = 'time-created'>
@@ -67,7 +67,6 @@ export default {
     width: 100%;
 }
 .tag-box.blog-tag-box .tagpill {
-    cursor: none;
     font-size: 12px;
     padding: 5px;
 }
