@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+// Portfolio Imports
 import Home from '../views/portfolio/Home.vue'
 import AddAboutMe from '../views/portfolio/AddAboutMe.vue'
 import EditAboutMe from '../views/portfolio/EditAboutMe.vue'
@@ -10,6 +11,13 @@ import AddCertificate from '../views/portfolio/AddCertificate.vue'
 import CertificateInfo from '../views/portfolio/CertificateInfo.vue'
 import EditCertificate from '../views/portfolio/EditCertificate.vue'
 import EditContactMe from '../views/portfolio/EditContactMe'
+
+// Blog imports
+import Blog from '../views/blog/Blog.vue'
+import AddNewBlog from '../views/blog/AddNewBlog.vue'
+import ViewBlogDetails from '../views/blog/ViewBlogDetails.vue'
+import EditSingleBlog from '../views/blog/EditSingleBlog.vue'
+import TagView from '../views/blog/TagView.vue'
 
 // auth guard
 
@@ -102,6 +110,36 @@ const routes = [
     component: EditContactMe,
     props: true,
     beforeEnter: requireAuth
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: Blog
+  },
+  {
+    path: '/blog/addnewblog',
+    name: 'AddNewBlog',
+    component: AddNewBlog,
+    beforeEnter: requireAuth 
+  },
+  {
+    path: '/blog/:id',
+    name: 'ViewBlogDetails',
+    component: ViewBlogDetails,
+    props: true
+  },
+  {
+    path: '/blog/edit/:id',
+    name: 'EditSingleBlog',
+    component: EditSingleBlog,
+    props: true,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/blog/tag/:tag',
+    name: 'TagView',
+    component: TagView,
+    props: true
   }
 
 ]

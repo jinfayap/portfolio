@@ -5,10 +5,10 @@
       <div class = 'skillset'>
           <div v-for = 'skill in skills' class = 'skill-pill' :key = skill.id>
               <div class = 'skill-value'>{{ skill.skill }}</div>
-              <div class = 'skillbar'> 
+              <!-- <div class = 'skillbar'> 
                   <span :style = "{color: 'black', 'user-select': 'none'}">{{ skill.proficiency }}</span>
                   <span class = 'percentage' :style = "{width: skill.proficiency + '%'}">{{ skill.proficiency }}%</span>
-              </div>
+              </div> -->
               <div class="controls" v-if = 'ownership'>
                   <span class="material-icons" @click = 'handleDelete(skill.id)'>delete</span>
                   <span class="material-icons" @click = 'handleUpdate(skill.id)' >edit</span>
