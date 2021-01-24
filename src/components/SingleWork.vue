@@ -74,14 +74,17 @@ export default {
     font-size: 10px;
 }
 .workCard .work-information {
+    position: absolute;
+    top: 54%;
     margin: 0;
     padding: 10px;
     font-size: 13px;
-    height: 42%;
+    max-height: 38%;
     text-align: start;
     overflow-y: scroll;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* IE and Edge */
+    /* border: 1px solid red; */
 }
 .workCard .work-information div span {
     letter-spacing: 2px;
@@ -108,6 +111,7 @@ export default {
     border-top: 1px solid black;
     width: 100%;
     display: flex;
+    z-index: 100;
 }
 .work-footer a{
     margin-left: auto;
