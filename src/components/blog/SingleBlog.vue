@@ -9,7 +9,6 @@
             <img :src="blog.imageUrl">
         </div>
       <div class = 'tag-box blog-tag-box'>
-          Current tags:
           <div v-for = 'tagname in blog.tagList' :key = tagname >
               <router-link :to = "{name: 'TagView', params: { tag: tagname } }">
                   <span class = 'tagpill'>{{tagname}}</span>
