@@ -72,4 +72,7 @@ nav {
 .nav-links button {
     margin-left: 10px;
 }
+.basic-nav .router-link-active.router-link-exact-active {
+    color: white;
+}
 </style>
