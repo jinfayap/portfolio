@@ -10,11 +10,12 @@
           </div>
       </div>
       <div class="blog-sidebar">
-          blog sidebar
           <!-- Add a blog button here -->
-          <router-link :to = "{ name: 'AddNewBlog' }">
-              <button>Add a new Blog Post</button>
-          </router-link>
+          <div>
+            <router-link :to = "{ name: 'AddNewBlog' }" v-if = 'ownership'>
+                <button>New Blog</button>
+            </router-link>             
+          </div>
           <!-- Cloud tag -->
           <TagCloud :blogs = blogs />
       </div>
@@ -25,12 +26,21 @@
 import getCollection from '@/composable/getCollection'
 import SingleBlog from '@/components/blog/SingleBlog.vue'
 import TagCloud from '@/components/blog/TagCloud.vue'
+import { computed } from 'vue'
+import getUser from '@/composable/getUser'
 
 export default {
     components: { SingleBlog, TagCloud },
     setup() {
         const { documents:blogs, error } = getCollection('blogs')
-        return { blogs, error }
+
+        const { user } = getUser()
+
+        const ownership = computed(() => {
+            return blogs && user.value
+        }) 
+        
+        return { blogs, error, ownership }
     }
 }
 </script>
@@ -50,7 +60,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid red;
 }
 .blog-container {
     width: 100%;

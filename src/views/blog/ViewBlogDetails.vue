@@ -18,7 +18,7 @@
       </div>
           </div>
       </div>
-      <div class="blog-details control">
+      <div class="blog-details control" v-if = 'ownership'>
           Controls:
           <router-link :to = "{ name: 'EditSingleBlog', params: { id: id} }">
               <button>Edit Blog</button>
@@ -34,6 +34,8 @@ import getDocument from '@/composable/getDocument'
 import useCollection from '@/composable/useCollection'
 import useStorage from '@/composable/useStorage'
 import { useRouter } from 'vue-router'
+import { computed } from 'vue'
+import getUser from '@/composable/getUser'
 
 export default {
     props: [ 'id' ],
@@ -43,7 +45,12 @@ export default {
         const { deleteImage, error: deleteImageError } = useStorage('blogs')
         
         const router = useRouter()
+        const { user } = getUser()
 
+        const ownership = computed(() => {
+            return blog && user.value
+        }) 
+        
         const handleDelete = async() => {
             // console.log(blog.value.filePath)
             if (blog.value.filePath != null) {
@@ -54,7 +61,7 @@ export default {
                 router.push({ name: 'Blog' })
             }
         }
-        return { blog, handleDelete }
+        return { blog, handleDelete, ownership }
     }
 }
 </script>
