@@ -4,14 +4,20 @@ import { projectFirestore } from '../firebase/config'
 const error = ref(null)
 const documents = ref(null)
 
-const useCollection = (collection) => {
+const useCollection = (collection, query = null) => {
     error.value = null
-
-    let collectionRef = projectFirestore.collection(collection).orderBy('createdAt', 'desc')
+    let collectionRef
+    if(query) {
+        // Cannot do orderBy in query (limitation)
+        collectionRef = projectFirestore.collection(collection)
+        .where(...query)
+    }else {
+        collectionRef = projectFirestore.collection(collection).orderBy('createdAt', 'desc')
+    }
 
     const unsub = collectionRef.onSnapshot(snapshot => {
-        let results = []
         // console.log(snapshot)
+        let results = []
         snapshot.docs.forEach(doc => {
              doc.data().createdAt && results.push({...doc.data(), id: doc.id})
         })
